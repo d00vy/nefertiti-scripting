@@ -1,0 +1,40 @@
+##########
+# YAML tmuxp template for Nefertiti Cryptotrader Bot
+# Created by github.com/d00vy
+#
+# More information at: https://d00vy.com/blog/how_setup_nefertiti_cryptotrader_bot/
+# Nefertiti Documentation: https://nefertiti-tradebot.com/
+##########
+
+session_name: cryptobots
+windows:
+  - window_name: bots
+    layout: tiled
+    panes:
+      # 1 Sell bots load first
+      - ./exchange1/exchange1_sell_bot.sh
+
+      # 2 Delay buy bots 10s then load
+      - shell_command:
+        - sleep 10
+        - ./exchange1/exchange1_buy_bot.sh
+
+      # 3 Second exchange sell bot
+      - ./exchange2/exchange2_sell_bot.sh
+
+      # 4 Delay second exchange buy bots 10s then load
+      - shell_command:
+        - sleep 10
+        - ./exchange2/exchange2_buy_bot.sh
+
+      # 5 Third exchange sell bot
+      - ./exchange3/exchange3_sell_bot.sh
+
+      # 6 Delay third exchange buy bots 10s then load
+      - shell_command:
+        - sleep 10
+        - ./exchange3/exchange3_buy_bot.sh
+
+      # LAST - Load a blank shell and focus it
+      -
+        focus: true
