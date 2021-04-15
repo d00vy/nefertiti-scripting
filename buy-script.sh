@@ -8,16 +8,18 @@ set -eu
 # Nefertiti Documentation: https://nefertiti-tradebot.com/
 ##########
 
-## Define variables
+## Define buy bot variables
 EXCHANGE="BTRX" #Exchange you want to run
-PRICE="XX" #Max amount spent per trade
-MARKET="USD-ETH" #Market to trade (USD-ETH,USD-BTC)
+PRICE="XX" #Amount of base currency to spend per order
+MARKET="USD-ETH" #Markets to trade (USD-ETH,USD-BTC)
 API_KEY="XXX" #Exchange API Key
 API_SECRET="XXX" #Exchange API Secret
-PUSHOVER_APP_KEY="XXX" #Pushover App Key
-PUSHOVER_USER_KEY="XXX" #Pushover User Key
+API_PASS="XXX" #Exchange API Passphrase (remove if not required)
+PUSHOVER_APP_KEY="NONE" #Pushover App Key
+PUSHOVER_USER_KEY="NONE" #Pushover User Key
 TELEGRAM_KEY="XXX" #Telegram Bot Token
 TELEGRAM_ID="XXX" #Telegram channel ID
+REPEAT=1 #Repeat interval (Default is 1 hour)
 
 ## Execute buy bots
 echo "Loaded variables - Starting Buy Bot for $MARKET"
@@ -26,9 +28,12 @@ echo "Loaded variables - Starting Buy Bot for $MARKET"
 	--market=$MARKET \
 	--api-key=$API_KEY \
 	--api-secret=$API_SECRET \
+	--api-passphrase=$API_PASS \
 	--telegram-app-key=$TELEGRAM_KEY \
 	--telegram-chat-id=$TELEGRAM_ID \
 	--pushover-app-key=$PUSHOVER_APP_KEY \
 	--pushover-user-key=$PUSHOVER_USER_KEY \
 	--price=$PRICE \
-	--debug --ignore-error --repeat=1 \
+	--repeat=$REPEAT \
+	--ignore-error
+
