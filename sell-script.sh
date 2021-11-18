@@ -17,10 +17,11 @@ PUSHOVER_APP_KEY="NONE" #Pushover App Key
 PUSHOVER_USER_KEY="NONE" #Pushover User Key
 TELEGRAM_KEY="XXX" #Telegram Bot Token
 TELEGRAM_ID="XXX" #Telegram channel ID
-STRATEGY="0" #Selling strategy to use [0*|1|2|3|4]
+STOPLOSS="N" #Use stoploss strategy [Y/N]
 NOTIFY="2" #Notification verbosity [0|1|2*|3]
 MULT="1.05" #Set sell price multiplier, default is 5% (1.05*)
 #HOLD=BTC-USD,BTC-USDT #Name of markets not to sell
+#EARN=BTC-USD,ETH-USD #Name of markets to keep profits invested
 
 ## Execute sell bot
 echo "Loaded Variables - Starting Sell Bot on $EXCHANGE"
@@ -33,7 +34,7 @@ cryptotrader sell \
 	--telegram-chat-id=$TELEGRAM_ID \
 	--pushover-app-key=$PUSHOVER_APP_KEY \
 	--pushover-user-key=$PUSHOVER_USER_KEY \
-	--strategy=$STRATEGY \
+	--stoploss=$STOPLOSS \
 	--notify=$NOTIFY \
 	--mult=$MULT \
-	--ignore-error
+	--ignore=error

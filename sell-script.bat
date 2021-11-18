@@ -32,8 +32,8 @@ SET TELEGRAM_KEY=XXX
 :: Telegram channel ID
 SET TELEGRAM_ID=XXX
 
-:: Selling strategy to use [0*|1|2|3|4]
-SET STRATEGY=0
+:: Use stoploss strategy? [Y/N]
+SET STOPLOSS=N
 
 :: Notification verbosity [0|1|2*|3]
 SET NOTIFY=2
@@ -43,6 +43,9 @@ SET MULT=1.05
 
 :: Name of markets not to sell
 ::SET HOLD=BTC-USD,BTC-USDT
+
+:: Name of markets not to keep profits in coin
+::SET EARN=BTC-USD,BTC-USDT
 
 
 :::: Execute sell bot
@@ -56,7 +59,7 @@ echo Loaded Variables - Starting Sell Bot on %EXCHANGE%
 	--telegram-chat-id=%TELEGRAM_ID% ^
 	--pushover-app-key=%PUSHOVER_APP_KEY% ^
 	--pushover-user-key=%PUSHOVER_USER_KEY% ^
-	--strategy=%STRATEGY% ^
+	--stoploss=%STOPLOSS% ^
 	--notify=%NOTIFY% ^
 	--mult=%MULT% ^
-	--ignore-error
+	--ignore=error

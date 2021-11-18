@@ -20,6 +20,7 @@ PUSHOVER_USER_KEY="NONE" #Pushover User Key
 TELEGRAM_KEY="XXX" #Telegram Bot Token
 TELEGRAM_ID="XXX" #Telegram channel ID
 REPEAT=1 #Repeat interval (Default is 1 hour)
+TOP=2 #Amount of orders to place per market
 
 ## Execute buy bots
 echo "Loaded variables - Starting Buy Bot for $MARKET"
@@ -35,5 +36,6 @@ echo "Loaded variables - Starting Buy Bot for $MARKET"
 	--pushover-user-key=$PUSHOVER_USER_KEY \
 	--price=$PRICE \
 	--repeat=$REPEAT \
-	--ignore-error
+	--top=$TOP \
+	--ignore=error
 

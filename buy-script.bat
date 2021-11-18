@@ -41,6 +41,8 @@ SET TELEGRAM_ID=XXX
 :: Repeat interval (Default is 1 hour)
 SET REPEAT=1
 
+:: Amount of orders to place per market
+SET TOP=2
 
 :::: Execute buy bots
 echo Loaded variables - Starting Buy Bot for %MARKET%
@@ -56,4 +58,5 @@ echo Loaded variables - Starting Buy Bot for %MARKET%
 	--pushover-user-key=%PUSHOVER_USER_KEY% ^
 	--price=%PRICE% ^
 	--repeat=%REPEAT% ^
-	--ignore-error
+	--top=%TOP%
+	--ignore=error
